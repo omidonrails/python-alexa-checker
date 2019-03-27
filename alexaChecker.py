@@ -5,3 +5,9 @@ from bs4 import BeautifulSoup as soup
 siteAddress = "hamyarwp.com"
 submit_url = "https://www.alexa.com/siteinfo/" + siteAddress
 page = requests.get(submit_url)
+
+
+page_content = soup(page.content , "lxml")
+
+ranks = page_content.findAll("strong")
+print(ranks)
