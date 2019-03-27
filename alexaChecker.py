@@ -1,16 +1,25 @@
+#!/usr/bin/python3
+
 import requests
-#import bs4
+import sys
 from bs4 import BeautifulSoup as soup
 import os
 
-siteAddress = "hamyarwp.com"
+siteAddress = sys.argv[1]
+print("SiteName : " + siteAddress)
 submit_url = "https://www.alexa.com/siteinfo/" + siteAddress
 page = requests.get(submit_url)
 
 
 page_content = soup(page.content , "lxml")
 
-strong_tags = page_content.findAll("strong")
+strong_tags = page_content.find_all("strong")
+#country_name = page_content.find_all('div',
+#             {'class': lambda x: x
+#                       and 'dynamic-icon' in x.split()
+#             }
+#            )
+#
 
 global_rank = strong_tags[6].text
 print("Global Rank : " + global_rank.strip())
