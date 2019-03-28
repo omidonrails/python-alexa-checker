@@ -3,7 +3,6 @@
 import requests
 import sys
 from bs4 import BeautifulSoup as soup
-import os
 
 siteAddress = sys.argv[1]
 print("SiteName : " + siteAddress)
