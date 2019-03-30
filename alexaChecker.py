@@ -14,10 +14,11 @@ page_content = soup(page.content, "lxml")
 
 strong_tags = page_content.find_all("strong")
 
-country_name = page_content.find_all("table", {
-    "id": "demographics_div_country_table"})
+country_name = page_content.select_one('#demographics_div_country_table')
 
-print(country_name[0].a)
+for country in country_name.select('a'):
+    print(country.text.strip())
+
 
 global_rank = strong_tags[6].text
 print("\nGlobal Rank : " + global_rank.strip())
